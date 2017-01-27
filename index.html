@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>Wordpress exporter</title>
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="static/jquery.min.js"></script>
+  <script src="static/bootstrap.min.js"></script>
+  <script src="api.js"></script>
+  <script src="main.js"></script>
+</head>
+<body>
+
+  <div class="content">
+    <div class="container">
+      <h1>Wordpress exporter</h1>
+      <hr>
+      <form>
+        <label for="url">Site URL (e.g. http://robotics.umich.edu/)</label>
+        <div class="input-group">
+          <input type="text" id="url" class="form-control" autofocus>
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-success" value="Export">
+          </span>
+        </div>
+      </form>
+      <div id="load-info" class="hidden">
+        <hr>
+        <div class="row">
+          <div class="col-sm-2">Loading pages</div>
+          <div class="col-sm-10">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div id="page-content" class="break-after-pages">
+        <h1 id="site-name"></h1>
+        <div id="site-contents">Stuff here</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

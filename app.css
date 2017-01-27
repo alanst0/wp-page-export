@@ -1,0 +1,25 @@
+body {
+    margin: 1em;
+}
+
+/* Only show #page-content when printing */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #page-content, #page-content * {
+        visibility: visible;
+    }
+    #page-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* If the "break-after-pages" class is enabled, add page breaks after each page */
+
+    #page-content.break-after-pages .site-page {
+        page-break-after: always;
+    }
+
+}
