@@ -16,10 +16,9 @@ body {
         left: 0;
     }
 
-    /* If the "break-after-pages" class is enabled, add page breaks after each page */
-
-    #page-content.break-after-pages .site-page {
+    .site-page {
         page-break-after: always;
+        page-break-inside: avoid;
     }
 
 }

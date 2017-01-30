@@ -30,11 +30,14 @@ function renderPages(event, data) {
     $('#load-info').hide();
     updatePageProgress({}, {current: 0, total: 1});
     $.each(data.pages, function(_, page) {
-        $('#site-contents')
-            .append($('<hr>'))
-            .append($('<h1>').text(page.title.rendered));
+        if (page.content.rendered == "") {
+            return;
+        }
+        var wrapper = $('<div>', {class: "site-page"}).appendTo($("#site-contents"));
+        wrapper.append($('<hr>'))
+            .append($('<h1>').html(page.title.rendered));
         $('<div>', {class: "site-page"}).html(page.content.rendered)
-            .appendTo($('#site-contents'));
+            .appendTo(wrapper);
     });
 }
 
