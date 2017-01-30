@@ -36,7 +36,7 @@ function renderPages(event, data) {
         var wrapper = $('<div>', {class: "site-page"}).appendTo($("#site-contents"));
         wrapper.append($('<hr>'))
             .append($('<h1>').html(page.title.rendered));
-        $('<div>', {class: "site-page"}).html(page.content.rendered)
+        $('<div>', {class: "site-page-content"}).html(page.content.rendered)
             .appendTo(wrapper);
     });
 }

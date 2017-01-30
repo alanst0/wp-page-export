@@ -2,6 +2,25 @@ body {
     margin: 1em;
 }
 
+.site-page {
+    clear: both;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Only show #page-content when printing */
 @media print {
     body * {
