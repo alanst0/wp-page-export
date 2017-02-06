@@ -41,12 +41,19 @@ function renderPages(event, data) {
     });
 }
 
+function normalizeURL(url) {
+    if (!url.match(/^(https?:)?\/\//)) {
+        url = '//' + url;
+    }
+    return url;
+}
+
 jQuery(function($) {
     $('.hidden').hide().removeClass('hidden');
     $('form').on('submit', function(e) {
         e.preventDefault();
         var url = $(this).find('input#url').val();
         if (url)
-            generateExport(new Site(url));
+            generateExport(new Site(normalizeURL(url)));
     });
 });
