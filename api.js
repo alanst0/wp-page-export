@@ -3,6 +3,13 @@ Site = function(url) {
     this.json_url = url + '/wp-json';
 }
 
+Site.getResponseErrorInfo = function(response) {
+    return {
+        message: Site.getResponseErrorMessage(response),
+        network_error: response.readyState == 0,
+    }
+}
+
 Site.getResponseErrorMessage = function(response) {
     if (response.responseJSON) {
         if (response.responseJSON.code == "rest_no_route") {
@@ -10,19 +17,22 @@ Site.getResponseErrorMessage = function(response) {
         }
     }
     if (response.status == 404) {
-        return "Site not found";
+        return "Site not found.";
     }
-    return "Request failed: " + response.statusText + " (" + response.status + ")";
+    if (response.status) {
+        return "Request failed: " + response.statusText + " (" + response.status + ")";
+    }
+    return "Unable to connect to the specified site.";
 }
 
 Site.prototype.getData = function() {
     var events = $({});
-    $.getJSON(this.json_url)
+    var request = $.getJSON(this.json_url)
         .done(function(data) {
             events.trigger('done', data);
         })
         .fail(function(response) {
-            events.trigger('error', {message: Site.getResponseErrorMessage(response)});
+            events.trigger('error', Site.getResponseErrorInfo(response));
         });
     return events;
 }
@@ -35,7 +45,7 @@ Site.prototype.getAllPages = function() {
     var page_data = [];
 
     var onError = function(response) {
-        events.trigger('error', {message: Site.getResponseErrorMessage(response)});
+        events.trigger('error', Site.getResponseErrorInfo(response));
     };
 
     var fetchPageGroup = function(page_id) {
