@@ -21,6 +21,12 @@ body {
     margin-right: auto;
 }
 
+table td, table th {
+    padding: 4px 6px;
+    line-height: 1.25;
+    border: 1px solid #000;
+}
+
 /* Only show #page-content when printing */
 @media print {
     body * {
