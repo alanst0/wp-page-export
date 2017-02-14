@@ -1,4 +1,7 @@
 Site = function(url) {
+    if (window.HAS_NGINX) {
+        url = '/proxy/' + url;
+    }
     this.url = url;
     this.json_url = url + '/wp-json';
 }

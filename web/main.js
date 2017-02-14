@@ -46,7 +46,10 @@ function renderPages(event, data) {
 
 function normalizeURL(url) {
     if (!url.match(/^(https?:)?\/\//)) {
-        url = '//' + url;
+        // The nginx proxy expects a protocol, so use "http".
+        // Otherwise, assume this is being hosted statically. We can't request
+        // something over a different protocol, so just use this page's protocol.
+        url = (window.HAS_NGINX ? 'http:' : '') + '//' + url;
     }
     return url;
 }
