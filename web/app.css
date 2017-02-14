@@ -2,6 +2,10 @@ body {
     margin: 1em;
 }
 
+form {
+    margin-bottom: 1em;
+}
+
 .site-page {
     clear: both;
 }
