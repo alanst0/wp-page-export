@@ -1,4 +1,5 @@
 function generateExport(site) {
+    $('#page-content h1#site-name').text('');
     site.getData()
         .on('done', function(event, data) {
             $('#page-content h1#site-name').text(data.name);
