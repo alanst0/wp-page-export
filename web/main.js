@@ -17,7 +17,6 @@ function generateExport(site) {
 }
 
 function handleError(event, info) {
-    console.warn(info.message);
     $('#load-info').hide();
     $('#load-error').show().find('.alert').text(info.message);
     if (info.network_error) {

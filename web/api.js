@@ -22,6 +22,9 @@ Site.getResponseErrorMessage = function(response) {
     if (response.status == 404) {
         return "Site not found.";
     }
+    if (response.status == 502 || response.status == 504) {
+        return "Connection to site timed out.";
+    }
     if (response.status) {
         return "Request failed: " + response.statusText + " (" + response.status + ")";
     }
